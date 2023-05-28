@@ -2,7 +2,6 @@
 import streamlit as st
 import pandas as pd
 import datetime
-from selenium import webdriver
 from bs4 import BeautifulSoup
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
@@ -21,13 +20,14 @@ with open('classifier_trained_model.pkl', 'rb') as f:
 with open('regressor_trained_model.pkl', 'rb') as f:
     hgr = pickle.load(f)
 
+# Loading unseen data
+# Send a GET request to the website
+url_48 = "https://weather.com/weather/hourbyhour/l/c097b546627cdff2da1e276cb9b2731055718a5e7270d777a92857a9701c7870" 
+response_48 = requests.get(url_48)
 
-#loading unseen data
-content = "https://weather.com/weather/hourbyhour/l/c097b546627cdff2da1e276cb9b2731055718a5e7270d777a92857a9701c7870"
-response = requests.get(content)
-soup = BeautifulSoup(response.content, 'html.parser')
-
-temp_val = soup.findAll('div', attrs={'class':'DetailsTable--field--CPpc_'})
+# Create a BeautifulSoup object from the response content
+soup_48 = BeautifulSoup(response_48.content, "html.parser")
+temp_val = soup_48.findAll('div', attrs={'class':'DetailsTable--field--CPpc_'})
 
 
 forecast = pd.DataFrame()
