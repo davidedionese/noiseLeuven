@@ -1,5 +1,4 @@
 #importing packages
-import streamlit as st
 import pandas as pd
 import datetime
 from bs4 import BeautifulSoup
