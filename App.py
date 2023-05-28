@@ -2,8 +2,6 @@
 import pandas as pd
 import datetime
 from bs4 import BeautifulSoup
-import plotly.graph_objects as go
-import matplotlib.pyplot as plt
 import pickle
 from datetime import datetime
 from datetime import timedelta
